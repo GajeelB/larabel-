@@ -12,7 +12,7 @@
 </head>
 
 <body class="dark:bg-gray-900">
-<nav class="px-2 bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+<nav class="px-2 bg-sky-900 border-2 border-b-sky-400 border-sky-900 rounded-b-lg">
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <button data-collapse-toggle="navbar-multi-level" type="button"
                 class="inline-flex justify-center items-center ml-3 text-gray-400 rounded-lg md:hidden hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:text-gray-400 dark:hover:text-white dark:focus:ring-gray-500"
@@ -26,7 +26,7 @@
             </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-            <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul class="flex flex-col p-4 mt-4 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0">
                 <li>
                     <a href="/"
                        class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-white dark:bg-blue-600 md:dark:bg-transparent"
@@ -124,7 +124,7 @@
 </main>
 
 <footer
-    class="fixed bottom-0 left-0 z-20 p-4 w-full bg-white border-t border-gray-200 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
+    class="fixed bottom-0 left-0 z-20 p-4 w-full border-t border-gray-200 md:flex md:items-center md:justify-between md:p-6 bg-sky-900 border-2 rounded-t-lg border-sky-900 border-t-sky-400">
     <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2022 <a href="https://flowbite.com/"
                                                                                     class="hover:underline">Flowbite™</a>. All Rights Reserved.
     </span>

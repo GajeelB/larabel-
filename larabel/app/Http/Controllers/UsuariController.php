@@ -17,4 +17,8 @@ class UsuariController extends Controller
     public function index() {
         return view('usuari.usuari_index');
     }
+
+    public function create(Request $request){
+
+    }
 }

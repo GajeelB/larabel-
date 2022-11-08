@@ -4,10 +4,11 @@
 
 @section("section")
 <section>
-    <div class="container px-6 py-12 h-full">
-        <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-            <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-                <form>
+    <div class="container px-6 py-9 px-20 my-3 flex justify-center">
+        <div class="flex justify-center items-center flex-wrap h-full w-3/5 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
+            <div class="w-full flex justify-center flex-wrap">
+                <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-gray-300 w-full text-center mb-10">Registre</h1>
+                <form action="create" class="w-full" type="post">
                     @csrf
                     <!-- Name input -->
                     <div class="mb-6">
@@ -15,6 +16,7 @@
                             type="text"
                             class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Nom"
+                            name="username"
                         />
                     </div>
 
@@ -24,6 +26,7 @@
                             type="text"
                             class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Email address"
+                            name="email"
                         />
                     </div>
 
@@ -33,6 +36,7 @@
                             type="password"
                             class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Password"
+                            name="password"
                         />
                     </div>
 
@@ -41,6 +45,7 @@
                             type="password"
                             class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Password"
+                            name="password_confirmation"
                         />
                     </div>
 

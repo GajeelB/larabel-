@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsuariController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/singup', [UsuariController::class, "logup"])->name("singup");
+Route::get('/login', [UsuariController::class, "login"])->name("login");
+Route::get('/usuaris', [UsuariController::class, "index"])->name("users");
+
 Route::get('/', function () {
-    return view('app');
+    return view('welcome');
 });

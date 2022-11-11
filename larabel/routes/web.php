@@ -14,10 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/singup', [UsuariController::class, "logup"])->name("singup");
-Route::post('/singup', [UsuariController::class, "create"]);
-Route::get('/login', [UsuariController::class, "login"])->name("login");
-Route::get('/usuaris', [UsuariController::class, "index"])->name("users");
+Route::resource('usuari', UsuariController::class);
+Route::get('/login', [UsuariController::class, 'login'])->name('usuari.login');
 
 
 Route::get('/', function () {

@@ -8,45 +8,57 @@
         <div class="flex justify-center items-center flex-wrap h-full w-3/5 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
             <div class="w-full flex justify-center flex-wrap">
                 <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-gray-300 w-full text-center mb-10">Registre</h1>
-                <form action="create" class="w-full" type="post">
+                <form action="{{route("usuari.store")}}" class="w-full" method="post">
                     @csrf
                     <!-- Name input -->
                     <div class="mb-6">
                         <input
                             type="text"
-                            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
+                            class="form-control block w-full px-4 py-2 text-xl font-normal @error("username") border-red-500 border-3 @enderror text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Nom"
                             name="username"
                         />
+                        @error("username")
+                            <p class="error-p">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <!-- Email input -->
                     <div class="mb-6">
                         <input
                             type="text"
-                            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
+                            class="@error("email") border-red-500 border-3 @enderror form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Email address"
                             name="email"
                         />
+                        @error("email")
+                        <p class="error-p">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <!-- Password input -->
                     <div class="mb-6">
                         <input
                             type="password"
-                            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
+                            class="@error("password") border-red-500 border-3 @enderror form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Password"
                             name="password"
                         />
+                        @error("password")
+                        <p class="error-p">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <div class="mb-6">
                         <input
                             type="password"
-                            class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
+                            class="@error("password_confirmation") border-red-500 border-3 @enderror form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Password"
                             name="password_confirmation"
                         />
+                        @error("password_confirmation")
+                        <p class="error-p">{{$message}}</p>
+                        @enderror
                     </div>
 
                     <!-- Submit button -->

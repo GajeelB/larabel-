@@ -6,7 +6,7 @@
     <div class="container px-6 py-9 px-20 ">
         <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
             <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0 p-10 pr-20 br">
-                    <img src="{{url('/img/prova.jpg')}}" class="rounded-3xl" alt="">
+                    <img src="{{asset('img.prova.jpg')}}" class="rounded-3xl" alt="">
 
             </div>
             <span class="h-80 bg-gray-500 rounded-xl border-2 border-gray-400 w-1"></span>

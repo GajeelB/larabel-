@@ -4,7 +4,8 @@
 @section("section")
     <section>
         <div class="container px-6 py-9 px-20 ">
-            <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
+            <div
+                class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
                 <div class="w-full h-96">
                     <a href="{{route("usuari.create")}}"
                        class="sticky bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 my-8 mx-8 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Agregar</a>
@@ -19,30 +20,26 @@
                             </tr>
                             </thead>
                             <tbody class="text-center">
-                            <?php for ($i = 0;
-                                       $i < 50;
-                                       $i++){
-                                ?>
-                            <tr class="bg-white <?php echo ($i%2 == 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
+                            @foreach($users as $user)
+
+                            <tr class="bg-white <?php echo ($user->id%2 != 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
                                 <th scope="col" class="py-3 px-6">
+                                    {{$user->name}}
                                 </th>
                                 <td class="py-4 px-6">
                                     <a class="btn btn-warning" href="#">
-                                        <i class="fa fa-edit"></i>
+                                        <span class="material-symbols-outlined">edit_square</span>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6">
                                     <form action="#" method="post">
                                         <button type="submit" class="btn btn-danger">
-                                    <span class="material-symbols-outlined">
-                                        delete
-                                    </span>
+                                            <span class="material-symbols-outlined">delete</span>
                                         </button>
                                     </form>
                                 </td>
-                            </tr><?php
-
-                                 } ?>
+                            </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UsuariController extends Controller
 {
@@ -13,7 +16,8 @@ class UsuariController extends Controller
      */
     public function index()
     {
-        return view("usuari.usuari_index");
+        $users = User::all();
+        return view("usuari.usuari_index")->with(["users"=>$users]);
     }
 
     /**
@@ -29,25 +33,34 @@ class UsuariController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @param \Illuminate\Http\Request $request
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-            "username" => "required | min:4 | max: 20",
-            "email" => "required | min:4 | max: 25",
+            "username" => "required | min:4 | max: 20 | unique:users",
+            "name" => "required",
+            "email" => "required | min:4 | max: 25 | unique:users",
             "password" => "required  | min:4 | max: 9",
             "password_confirmation" => "required |  | min:4 | max: 9 | same:password",
         ]);
-        return view("usuari.usuari_create");
+
+        User::create(
+            [
+                'name'=>$request->get("name"),
+                'username'=>$request->get("username"),
+                'email' => $request->get("email"),
+                'password'=> Hash::make($request->get("password")),
+            ]
+        );
+
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -58,19 +71,19 @@ class UsuariController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
-        //
+        return view("usuari.usuari_edit");
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +94,7 @@ class UsuariController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

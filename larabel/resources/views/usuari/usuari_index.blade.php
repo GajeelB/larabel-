@@ -22,7 +22,7 @@
                             <tbody class="text-center">
                             @foreach($users as $user)
 
-                            <tr class="bg-white <?php echo ($user->id%2 != 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
+                            <tr class="bg-white <?php echo ($user->id%2 == 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
                                 <th scope="col" class="py-3 px-6">
                                     {{$user->name}}
                                 </th>

@@ -16,6 +16,7 @@
                             type="text"
                             class="form-control block w-full px-4 py-2 text-xl font-normal @error("username") border-red-500 border-3 @enderror text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="User"
+                            value="{{old("username")}}"
                             name="username"
                         />
                         @error("username")
@@ -29,6 +30,7 @@
                             class="form-control block w-full px-4 py-2 text-xl font-normal @error("name") border-red-500 border-3 @enderror text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Nom"
                             name="name"
+                            value="{{old("name")}}"
                         />
                         @error("name")
                         <p class="error-p">{{$message}}</p>
@@ -42,6 +44,7 @@
                             class="@error("email") border-red-500 border-3 @enderror form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                             placeholder="Email address"
                             name="email"
+                            value="{{old("email")}}"
                         />
                         @error("email")
                         <p class="error-p">{{$message}}</p>

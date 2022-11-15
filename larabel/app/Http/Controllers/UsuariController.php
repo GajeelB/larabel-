@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Testing\Fluent\Concerns\Has;
 
 class UsuariController extends Controller
 {
@@ -17,7 +17,7 @@ class UsuariController extends Controller
     public function index()
     {
         $users = User::all();
-        return view("usuari.usuari_index")->with(["users"=>$users]);
+        return view("usuari.usuari_index")->with(["users" => $users]);
     }
 
     /**
@@ -47,12 +47,14 @@ class UsuariController extends Controller
 
         User::create(
             [
-                'name'=>$request->get("name"),
-                'username'=>$request->get("username"),
+                'name' => $request->get("name"),
+                'username' => $request->get("username"),
                 'email' => $request->get("email"),
-                'password'=> Hash::make($request->get("password")),
+                'password' => Hash::make($request->get("password")),
             ]
         );
+
+        return redirect(route('usuari.login'));
 
 
     }
@@ -106,5 +108,28 @@ class UsuariController extends Controller
     public function login()
     {
         return view("usuari.usuari_login");
+    }
+
+    public function singin(Request $request)
+    {
+        $request->validate([
+            'username' => "required",
+            'password' => "required",
+        ]);
+
+        if (Auth::attempt(["username"=> $request->get("username"), "password"=> $request->get("password")], $request->get("remember"))) {
+            $request->session()->regenerate();
+            return redirect(route("usuari.index"));
+        }
+        //no login
+        return back()->withErrors([
+            'username' => "incorrect credentials",
+        ])->onlyInput("username");
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect(route("usuari.login"));
     }
 }

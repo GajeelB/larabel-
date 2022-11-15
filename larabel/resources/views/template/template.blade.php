@@ -6,7 +6,8 @@
     <meta name="description" content="Resumen del contenido de la página">
     <title>@yield("tittle")</title>
     <link rel="stylesheet" href="css/estilo.css" type="text/css"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
     @vite('resources/css/app.css')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -27,7 +28,8 @@
         </button>
         <div class="hidden w-full md:block mr-9" id="navbar-multi-level">
             <ul class="flex w-full justify-between">
-                <div class="flex ml-9 items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-1/6">
+                <div
+                    class="flex ml-9 items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-1/6">
                     <li>
                         <a href="/"
                            class="menu-itemp text-xl"
@@ -35,16 +37,27 @@
                     </li>
                 </div>
 
-                <div class="flex items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-1/6">
-                    <li class="h-full">
-                        <a href="{{route("usuari.create")}}"
-                           class="menu-itemp text-xl">Registrar</a>
-                    </li>
+                <div
+                    class="flex items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-auto">
+                    @if(Auth::check())
+                        <li class="h-full ">
+                            <form action="{{route("usuari.logout")}}" method="post">
+                                @csrf
+                                <button class="menu-itemp text-xl">Log Out</button>
+                            </form>
 
-                    <li class="h-full ">
-                        <a href="{{route("usuari.login")}}"
-                           class="menu-itemp text-xl">Entrar</a>
-                    </li>
+                        </li>
+                    @else
+                        <li class="h-full">
+                            <a href="{{route("usuari.create")}}"
+                               class="menu-itemp text-xl">Registrar</a>
+                        </li>
+
+                        <li class="h-full ">
+                            <a href="{{route("usuari.login")}}"
+                               class="menu-itemp text-xl">Entrar</a>
+                        </li>
+                    @endif
                 </div>
 
             </ul>

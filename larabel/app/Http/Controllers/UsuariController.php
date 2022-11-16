@@ -78,7 +78,8 @@ class UsuariController extends Controller
      */
     public function edit($id)
     {
-        return view("usuari.usuari_edit");
+        $user = User::find($id);
+        return view("usuari.usuari_edit")->with(["user" => $user]);
     }
 
     /**
@@ -90,7 +91,20 @@ class UsuariController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            "username" => "required | min:4 | max: 20 | unique:users, ".$id,
+            "name" => "required",
+            "email" => "required | min:4 | max: 25 | unique:users".$id,
+            "password" => "required  | min:4 | max: 9",
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->get("name");
+        $user->username = $request->get("username");
+        $user->email = $request->get("email");
+        $user->password = Hash::make($request->get("password"));
+        dd($user);
+        $user->save();
     }
 
     /**

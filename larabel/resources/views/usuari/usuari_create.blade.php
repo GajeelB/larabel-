@@ -10,7 +10,7 @@
                 <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-gray-300 w-full text-center mb-10">Registre</h1>
                 <form action="{{route("usuari.store")}}" class="w-full" method="post">
                     @csrf
-                    <!-- Name input -->
+                    <!-- Username input -->
                     <div class="mb-6">
                         <input
                             type="text"
@@ -23,7 +23,7 @@
                             <p class="error-p">{{$message}}</p>
                         @enderror
                     </div>
-
+                    <!-- Name input -->
                     <div class="mb-6">
                         <input
                             type="text"

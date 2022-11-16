@@ -27,7 +27,7 @@
                                     {{$user->name}}
                                 </th>
                                 <td class="py-4 px-6">
-                                    <a class="btn btn-warning" href="#">
+                                    <a class="btn btn-warning" href="{{route("usuari.edit",$user->id)}}">
                                         <span class="material-symbols-outlined">edit_square</span>
                                     </a>
                                 </td>

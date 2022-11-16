@@ -117,9 +117,9 @@ class UsuariController extends Controller
             'password' => "required",
         ]);
 
-        if (Auth::attempt(["username"=> $request->get("username"), "password"=> $request->get("password")], $request->get("remember"))) {
+        if (Auth::attempt(["username" => $request->get("username"), "password"=> $request->get("password")])) {
             $request->session()->regenerate();
-            return redirect(route("usuari.index"));
+            return redirect()->route("usuari.index");
         }
         //no login
         return back()->withErrors([

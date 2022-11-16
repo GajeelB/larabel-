@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('usuari', UsuariController::class);
 Route::get('/login', [UsuariController::class, 'login'])->name('usuari.login');
 Route::post('/login', [UsuariController::class, 'singin']);
-Route::post('/login', [UsuariController::class, 'logout'])->name("usuari.logout");
+Route::post('/logout', [UsuariController::class, 'logout'])->name("usuari.logout");
 
 
 Route::get('/', function () {

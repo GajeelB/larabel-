@@ -20,9 +20,12 @@
                             </tr>
                             </thead>
                             <tbody class="text-center">
+                            <?php
+                                $i = 0;
+                                ?>
                             @foreach($users as $user)
 
-                            <tr class="bg-white <?php echo ($user->id%2 == 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
+                            <tr class="bg-white <?php echo ($i%2 == 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
                                 <th scope="col" class="py-3 px-6">
                                     {{$user->name}}
                                 </th>
@@ -32,14 +35,20 @@
                                     </a>
                                 </td>
                                 <td class="py-4 px-6">
-                                    <form action="#" method="post">
+                                    <form action="{{route("usuari.destroy", [$user])}}" method="post">
+                                        @method("delete")
+                                        @csrf
                                         <button type="submit" class="btn btn-danger">
                                             <span class="material-symbols-outlined">delete</span>
                                         </button>
                                     </form>
                                 </td>
                             </tr>
+                                <?php
+                                $i ++;
+                                ?>
                             @endforeach
+
                             </tbody>
                         </table>
                     </div>

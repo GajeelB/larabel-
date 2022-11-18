@@ -63,11 +63,11 @@ class UsuariController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($id)
     {
-        //
+        return view("usuari.usuari_show");
     }
 
     /**
@@ -87,14 +87,14 @@ class UsuariController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            "username" => "required | min:4 | max: 20 | unique:users, ".$id,
             "name" => "required",
-            "email" => "required | min:4 | max: 25 | unique:users".$id,
+            "username" => "required | min:4 | max: 20 | unique:users,username,". $id . ",id",
+            "email" => "required | min:4 | max: 25 | unique:users,email,". $id . ",id",
             "password" => "required  | min:4 | max: 9",
         ]);
 
@@ -103,19 +103,22 @@ class UsuariController extends Controller
         $user->username = $request->get("username");
         $user->email = $request->get("email");
         $user->password = Hash::make($request->get("password"));
-        dd($user);
         $user->save();
+
+        return view("usuari.usuari_profile");
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
-        //
+        User::destroy($id);
+        return redirect()->route("usuari.index")->with(["mensaje" => "Usuari eliminat",
+        ]);
     }
 
 
@@ -133,7 +136,7 @@ class UsuariController extends Controller
 
         if (Auth::attempt(["username" => $request->get("username"), "password"=> $request->get("password")])) {
             $request->session()->regenerate();
-            return redirect()->route("usuari.index");
+            return view("usuari.usuari_show");
         }
         //no login
         return back()->withErrors([

@@ -41,8 +41,8 @@
                     class="flex items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-auto">
                     @if(Auth::check())
                         <li class="h-full">
-                            <a href="{{route("usuari.edit", Auth::id())}}"
-                               class="menu-itemp text-xl">Editar Perfil</a>
+                            <a href="{{route("usuari.show", Auth::id())}}"
+                               class="menu-itemp text-xl">Perfil</a>
                         </li>
                         <li class="h-full ">
                             <form action="{{route("usuari.logout")}}" method="post">

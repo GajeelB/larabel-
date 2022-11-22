@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UsuariController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("auth")->only("edit", "destroy");
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -54,7 +59,7 @@ class UsuariController extends Controller
             ]
         );
 
-        return redirect(route('usuari.login'));
+        return redirect(route('usuaris.login'));
 
 
     }
@@ -65,9 +70,10 @@ class UsuariController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return view("usuari.usuari_show");
+
+        return view("usuari.usuari_show")->with(["usuari"=>$user]);
     }
 
     /**
@@ -76,9 +82,8 @@ class UsuariController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
         return view("usuari.usuari_edit")->with(["user" => $user]);
     }
 
@@ -105,7 +110,7 @@ class UsuariController extends Controller
         $user->password = Hash::make($request->get("password"));
         $user->save();
 
-        return view("usuari.usuari_profile");
+        return view("usuaris.usuari_profile");
     }
 
     /**
@@ -117,7 +122,7 @@ class UsuariController extends Controller
     public function destroy(int $id)
     {
         User::destroy($id);
-        return redirect()->route("usuari.index")->with(["mensaje" => "Usuari eliminat",
+        return redirect()->route("usuaris.index")->with(["mensaje" => "Usuari eliminat",
         ]);
     }
 
@@ -136,7 +141,7 @@ class UsuariController extends Controller
 
         if (Auth::attempt(["username" => $request->get("username"), "password"=> $request->get("password")])) {
             $request->session()->regenerate();
-            return view("usuari.usuari_show");
+            return redirect()->route("usuaris.show", [Auth::user()->username]);
         }
         //no login
         return back()->withErrors([
@@ -147,6 +152,6 @@ class UsuariController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect(route("usuari.login"));
+        return redirect(route("usuaris.login"));
     }
 }

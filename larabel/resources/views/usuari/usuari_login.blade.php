@@ -11,7 +11,7 @@
             </div>
             <span class="h-80 bg-gray-500 rounded-xl border-2 border-gray-400 w-1"></span>
             <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-                <form action="{{route("usuari.login")}}" method="post">
+                <form action="{{route("usuaris.login")}}" method="post">
                     @csrf
                     <!-- Email input -->
                     <div class="mb-6">

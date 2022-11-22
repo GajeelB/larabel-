@@ -4,8 +4,9 @@
 @section("section")
     <section>
         <div class="container px-6 py-9 px-20 ">
-            <div class="flex justify-center items-center flex-wrap h-full g-6 p-10 content-center">
-                <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div class="flex justify-center items-center flex-wrap h-1/2 g-6 p-10 content-center">
+                <div
+                    class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                     <div class="flex justify-end px-4 pt-4">
                         <button id="dropdownButton" data-dropdown-toggle="dropdown"
                                 class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
@@ -38,20 +39,39 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="flex flex-col items-center pb-10">
-                        <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="/docs/images/people/profile-picture-3.jpg"
-                             alt="Bonnie image"/>
-                        <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie Green</h5>
-                        <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>
-                        <div class="flex mt-4 space-x-3 md:mt-6">
-                            <a href="#"
-                               class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-                                friend</a>
-                            <a href="#"
-                               class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Message</a>
+                    <div class="flex flex-row items-center pb-10">
+                        <div class="w-1/2 flex justify-center ">
+                            <img class="bg-red-400 h-1/2 mb-3 rounded-full shadow-lg"
+                                 src="/docs/images/people/profile-picture-3.jpg"
+                                 alt="Bonnie image"/>
                         </div>
+                        <div class="w-1/2 flex justify-center content-center flex-col">
+                            <h5 class="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white">{{$usuari->username}}</h5>
+                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">{{$usuari->name}}</span>
+                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">{{$usuari->email}}</span>
+                            <div class="flex justify-center mt-4 space-x-3 md:mt-6">
+                                @if(Auth::check())
+                                    @if(Auth::user()->id == $usuari->id )
+                                        <a href="{{route("usuaris.edit", [$usuari->username])}}"
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            edit
+                                        </a>
+                                    @endif
+
+                                        <a href="#"
+                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
+                                            Message
+                                        </a>
+
+                                @endif
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+            </div>
+            <div>
+
             </div>
         </div>
     </section>

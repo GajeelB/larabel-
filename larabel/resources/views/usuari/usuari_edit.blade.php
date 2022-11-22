@@ -9,7 +9,7 @@
         <div class="flex justify-center items-center flex-wrap h-full w-3/5 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
             <div class="w-full flex justify-center flex-wrap">
                 <h1 class="font-medium leading-tight text-5xl mt-0 mb-2 text-gray-300 w-full text-center mb-10">Editar</h1>
-                <form action="{{route("usuari.update", $user->id )}}" class="w-full" method="post">
+                <form action="{{route("usuaris.update", $user->id )}}" class="w-full" method="post">
                     @method("put")
                     @csrf
                     <!-- Username input -->

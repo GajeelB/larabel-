@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('usuari', UsuariController::class);
-Route::get('/login', [UsuariController::class, 'login'])->name('usuari.login');
+Route::resource('usuaris', UsuariController::class ,['parameters' => [
+    'usuaris' => 'user'
+]])->scoped(['user'=>'username']);
+
+Route::get('/login', [UsuariController::class, "login"])->name('usuaris.login');
 Route::post('/login', [UsuariController::class, 'singin']);
-Route::post('/logout', [UsuariController::class, 'logout'])->name("usuari.logout");
+Route::post('/logout', [UsuariController::class, 'logout'])->name("usuaris.logout");
 
 
 Route::get('/', function () {

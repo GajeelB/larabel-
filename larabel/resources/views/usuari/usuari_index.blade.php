@@ -7,7 +7,7 @@
             <div
                 class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 p-10 rounded-3xl border-gray-700 bg-gray-500 border-4">
                 <div class="w-full h-96">
-                    <a href="{{route("usuari.create")}}"
+                    <a href="{{route("usuaris.create")}}"
                        class="sticky bg-blue-500 hover:bg-blue-400 text-white font-bold py-1 my-8 mx-8 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">Agregar</a>
                     <div class="rounded-xl border-t-white overflow-auto h-5/6 mt-4">
                         <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -30,12 +30,12 @@
                                     {{$user->name}}
                                 </th>
                                 <td class="py-4 px-6">
-                                    <a class="btn btn-warning" href="{{route("usuari.edit",$user->id)}}">
+                                    <a class="btn btn-warning" href="{{route("usuaris.edit",$user->id)}}">
                                         <span class="material-symbols-outlined">edit_square</span>
                                     </a>
                                 </td>
                                 <td class="py-4 px-6">
-                                    <form action="{{route("usuari.destroy", [$user])}}" method="post">
+                                    <form action="{{route("usuaris.destroy", [$user])}}" method="post">
                                         @method("delete")
                                         @csrf
                                         <button type="submit" class="btn btn-danger">

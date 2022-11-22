@@ -8,11 +8,73 @@
     <link rel="stylesheet" href="css/estilo.css" type="text/css"/>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.4/dist/flowbite.min.css" />
     @vite('resources/css/app.css')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/flowbite@1.5.4/dist/flowbite.js"></script>
 </head>
 
-<body class="dark:bg-gray-900">
+<body class="bg-gray-900 ">
+
+<nav class="bg-sky-900 border-gray-200 px-2 sm:px-4 py-2.5 border-2 border-b-sky-400 border-sky-900 rounded-b-lg dark:bg-gray-900">
+    <div class="container flex flex-wrap items-center justify-between mx-auto">
+
+        <div class="flex items-center md:order-2">
+            @if(Auth::check())
+            <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg" alt="user photo">
+            </button>
+            <!-- User menu -->
+            <div class="z-50 hidden my-4 text-base list-none bg-blue-800 divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                <div class="px-4 py-3">
+                    <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
+                    <span class="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                </div>
+                <ul class="py-1" aria-labelledby="user-menu-button">
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                    </li>
+                </ul>
+            </div>
+            @endif
+            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
+            </button>
+        </div>
+
+        <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="mobile-menu-2">
+            <ul class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <li>
+                    <a href="#" class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white" aria-current="page">Home</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Pricing</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <nav class="px-2 bg-sky-900 border-2 border-b-sky-400 border-sky-900 rounded-b-lg ">
     <div class="container flex flex-wrap h-full items-center mx-auto">
         <button data-collapse-toggle="navbar-multi-level" type="button"
@@ -41,11 +103,11 @@
                     class="flex items-end justify-between flex-col align-middle py-5 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 w-auto">
                     @if(Auth::check())
                         <li class="h-full">
-                            <a href="{{route("usuari.show", Auth::id())}}"
+                            <a href="{{route("usuaris.show", Auth::id())}}"
                                class="menu-itemp text-xl">Perfil</a>
                         </li>
                         <li class="h-full ">
-                            <form action="{{route("usuari.logout")}}" method="post">
+                            <form action="{{route("usuaris.logout")}}" method="post">
                                 @csrf
                                 <button class="menu-itemp text-xl">Log Out</button>
                             </form>
@@ -53,12 +115,12 @@
                         </li>
                     @else
                         <li class="h-full">
-                            <a href="{{route("usuari.create")}}"
+                            <a href="{{route("usuaris.create")}}"
                                class="menu-itemp text-xl">Registrar</a>
                         </li>
 
                         <li class="h-full ">
-                            <a href="{{route("usuari.login")}}"
+                            <a href="{{route("usuaris.login")}}"
                                class="menu-itemp text-xl">Entrar</a>
                         </li>
                     @endif

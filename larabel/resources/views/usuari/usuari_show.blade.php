@@ -6,13 +6,14 @@
         <div class="container px-6 py-9 px-20 ">
             <div class="flex justify-center items-center flex-wrap h-1/2 g-6 p-10 content-center">
                 <div
-                    class="w-full bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    class="w-full bg-opacity-50 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                    @if(Auth::check())
                     <div class="flex justify-end px-4 pt-4">
                         <button id="dropdownButton" data-dropdown-toggle="dropdown"
                                 class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
                                 type="button">
                             <span class="sr-only">Open dropdown</span>
-                            <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                            <svg class="w-6 h-6" aria-hidden="true" fill="black" viewBox="0 0 20 20"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"></path>
@@ -39,17 +40,18 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="flex flex-row items-center pb-10">
-                        <div class="w-1/2 flex justify-center ">
-                            <img class="bg-red-400 h-1/2 mb-3 rounded-full shadow-lg"
-                                 src="/docs/images/people/profile-picture-3.jpg"
+                    @endif
+                    <div class="flex flex-row items-center pb-10 py-8">
+                        <div class="w-1/2 flex justify-evenly ">
+                            <img class="bg-red-400 h-64 mb-3 rounded-full shadow-lg"
+                                 src="{{asset("img/user.jpeg")}}"
                                  alt="Bonnie image"/>
                         </div>
-                        <div class="w-1/2 flex justify-center content-center flex-col">
-                            <h5 class="mb-1 text-xl text-center font-medium text-gray-900 dark:text-white">{{$usuari->username}}</h5>
-                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">{{$usuari->name}}</span>
-                            <span class="text-sm text-center text-gray-500 dark:text-gray-400">{{$usuari->email}}</span>
-                            <div class="flex justify-center mt-4 space-x-3 md:mt-6">
+                        <div class="w-1/2 flex flex-col">
+                            <h5 class="mb-1 text-6xl text-start font-medium text-gray-900 dark:text-white">{{$usuari->username}}</h5>
+                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->name}}</span>
+                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->email}}</span>
+                            <div class="flex justify-start mt-4 space-x-3 md:mt-6">
                                 @if(Auth::check())
                                     @if(Auth::user()->id == $usuari->id )
                                         <a href="{{route("usuaris.edit", [$usuari->username])}}"
@@ -60,7 +62,7 @@
 
                                         <a href="#"
                                            class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
-                                            Message
+                                            Follow
                                         </a>
 
                                 @endif

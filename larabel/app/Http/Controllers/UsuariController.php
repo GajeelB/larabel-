@@ -68,12 +68,14 @@ class UsuariController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return mixed
      */
     public function show(User $user)
     {
-
-        return view("usuari.usuari_show")->with(["usuari"=>$user]);
+        if (Auth::user()->id != $user->id) {
+            return redirect()->route("usuaris.posts.index", $user->username);
+        }
+        return view("usuari.usuari_show")->with(["usuari" => $user]);
     }
 
     /**
@@ -98,8 +100,8 @@ class UsuariController extends Controller
     {
         $this->validate($request, [
             "name" => "required",
-            "username" => "required | min:4 | max: 20 | unique:users,username,". $id . ",id",
-            "email" => "required | min:4 | max: 25 | unique:users,email,". $id . ",id",
+            "username" => "required | min:4 | max: 20 | unique:users,username," . $id . ",id",
+            "email" => "required | min:4 | max: 25 | unique:users,email," . $id . ",id",
             "password" => "required  | min:4 | max: 9",
         ]);
 
@@ -139,7 +141,7 @@ class UsuariController extends Controller
             'password' => "required",
         ]);
 
-        if (Auth::attempt(["username" => $request->get("username"), "password"=> $request->get("password")])) {
+        if (Auth::attempt(["username" => $request->get("username"), "password" => $request->get("password")])) {
             $request->session()->regenerate();
             return redirect()->route("usuaris.show", [Auth::user()->username]);
         }

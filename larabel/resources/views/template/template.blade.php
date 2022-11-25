@@ -42,20 +42,20 @@
                     <ul class="py-1" aria-labelledby="user-menu-button">
                         <li>
                             <a href="#"
-                               class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                               class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Inici</a>
                         </li>
                         <li>
-                            <a href="{{route("usuaris.show", Auth::id())}}"
+                            <a href="{{route("usuaris.posts.index",Auth::user()->username)}}"
+                               class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Els meus posts</a>
+                        </li>
+                        <li>
+                            <a href="{{route("usuaris.show", Auth::user()->username)}}"
                                class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Perfil</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               class="block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
                         </li>
                         <li>
                             <form action="{{route("usuaris.logout")}}" method="post">
                                 @csrf
-                                <button class="w-full text-start block px-4 py-2 text-sm text-white hover:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log Out</button>
+                                <button class="w-full text-start block px-4 py-2 text-sm text-red-500 hover:text-red-800 hover:bg-red-500 ">Log Out</button>
                             </form>
                         </li>
                     </ul>
@@ -90,6 +90,12 @@
                         <a href="{{route("usuaris.create")}}"
                            class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Registrar</a>
                     </li>
+                @else
+                    <li>
+                        <a href="{{route("posts.latest")}}"
+                           class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Novetats</a>
+                    </li>
+
                 @endif
             </ul>
         </div>

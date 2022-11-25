@@ -39,7 +39,7 @@ class ImageController extends Controller
     {
         $image = $request->file("file");
         $nameImatge = Str::uuid() . "." . $image->extension();
-        $imageServer = Image::make($image)->greyscale();
+        $imageServer = Image::make($image);
         $imagePath = public_path("uploads") . '/' . $nameImatge;
         $imageServer->fit(800);
         $imageServer->save($imagePath);

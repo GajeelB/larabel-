@@ -18,7 +18,7 @@
                                     class="form-control block w-full px-4 py-2 text-xl font-normal @error("titol") border-red-500 border-3 @enderror text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                                     placeholder="Titol"
                                     value="{{old("titol")}}"
-                                    name="titol"
+                                    name="post_title"
                                 />
                                 @error("titol")
                                 <p class="error-p">{{$message}}</p>
@@ -29,12 +29,21 @@
                             <textarea
                                 class="form-control block w-full px-4 py-2 text-xl font-normal @error("com") border-red-500 border-3 @enderror text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded"
                                 placeholder="Contingut"
-                                name="com"
+                                name="post_content"
                                 value="{{old("com")}}"
                             ></textarea>
                                 @error("com")
                                 <p class="error-p">{{$message}}</p>
                                 @enderror
+                            </div>
+
+                            <div class="mb-6">
+                                <input
+                                    type="hidden"
+                                    name="post_image"
+                                    id="name_imge"
+                                />
+
                             </div>
 
                             <!-- Submit button -->

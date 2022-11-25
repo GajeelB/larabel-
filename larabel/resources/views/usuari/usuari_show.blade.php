@@ -51,6 +51,8 @@
                             <h5 class="mb-1 text-6xl text-start font-medium text-gray-900 dark:text-white">{{$usuari->username}}</h5>
                             <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->name}}</span>
                             <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->email}}</span>
+                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">Tel:</span>
+                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">Direcció:</span>
                             <div class="flex justify-start mt-4 space-x-3 md:mt-6">
                                 @if(Auth::check())
                                     @if(Auth::user()->id == $usuari->id )
@@ -59,21 +61,12 @@
                                             edit
                                         </a>
                                     @endif
-
-                                        <a href="#"
-                                           class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
-                                            Follow
-                                        </a>
-
                                 @endif
                             </div>
                         </div>
 
                     </div>
                 </div>
-            </div>
-            <div>
-
             </div>
         </div>
     </section>

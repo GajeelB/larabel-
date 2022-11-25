@@ -15,10 +15,10 @@ dropzone.on("sending", (file, xhr, fromData)=>{
     console.log(file);
 });
 dropzone.on("success", (file, response)=>{
-    console.log(response);
+    document.getElementById("name_imge").value = response.nameImage;
 });
 dropzone.on("error", (file, message)=>{
-    console.log(response);
+    console.log(file);
 });
 dropzone.on("remuveFile", ()=>{
     console.log("Fitxer Eliminat");

@@ -72,10 +72,13 @@ class UsuariController extends Controller
      */
     public function show(User $user)
     {
-        if (Auth::user()->id != $user->id) {
-            return redirect()->route("usuaris.posts.index", $user->username);
+        if (Auth::check() && Auth::user()->id == $user->id) {
+            return view("usuari.usuari_show")->with(["usuari" => $user]);
         }
-        return view("usuari.usuari_show")->with(["usuari" => $user]);
+
+        return redirect()->route("usuaris.posts.index", $user->username);
+
+
     }
 
     /**

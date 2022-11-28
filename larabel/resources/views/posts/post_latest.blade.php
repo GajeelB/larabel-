@@ -17,6 +17,7 @@
                                          alt=""/>
                                     <div class="p-5">
                                         <h5 class="text-center mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{$post->post_title}}</h5>
+                                        <span class="material-symbols-outlined">favorite</span>
                                     </div>
                                 </div>
                             </a>

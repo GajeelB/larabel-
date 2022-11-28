@@ -51,7 +51,7 @@
                             <h5 class="mb-1 text-6xl text-start font-medium text-gray-900 dark:text-white">{{$usuari->username}}</h5>
                             <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->name}}</span>
                             <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">{{$usuari->email}}</span>
-                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">Tel:</span>
+                            <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">Admin: {{$usuari->is_admin ? "Si" : "No"}}</span>
                             <span class="text-sm text-start text-xl text-gray-700 dark:text-gray-400">Direcció:</span>
                             <div class="flex justify-start mt-4 space-x-3 md:mt-6">
                                 @if(Auth::check())

@@ -90,12 +90,18 @@
                         <a href="{{route("usuaris.create")}}"
                            class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Registrar</a>
                     </li>
+
                 @else
                     <li>
                         <a href="{{route("posts.latest")}}"
                            class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Novetats</a>
                     </li>
-
+                    @if(Auth::user()->is_admin)
+                        <li>
+                            <a href="{{route("usuaris.index")}}"
+                               class="block py-2 pl-3 text-gray-400 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-white md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">LLista Usuaris</a>
+                        </li>
+                    @endif
                 @endif
             </ul>
         </div>

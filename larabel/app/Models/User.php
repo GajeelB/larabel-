@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        'is_admin'
     ];
 
     /**
@@ -56,5 +57,9 @@ class User extends Authenticatable
 
     public function isFollowed(User $user){
         return $this->followers->contains($user->id);
+    }
+
+    public function isAdmin(){
+        return $this->is_admin;
     }
 }

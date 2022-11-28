@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UsuariController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,8 @@ Route::resource('images', ImageController::class )->only("store");
 Route::post("{usuari}/follow", [FollowController::class, 'store'])->name("user.follow.store");
 Route::delete("{usuari}/unfollow", [FollowController::class, 'destroy'])->name("user.follow.delete");
 
+//LIKES
+Route::post("/{post}/like",[LikeController::class, "switchLike"])->name("posts.likes");
 
 Route::get('/', function () {
     return view('welcome');

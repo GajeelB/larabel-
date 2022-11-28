@@ -25,12 +25,12 @@
                                 ?>
                             @foreach($users as $user)
 
-                            <tr class="bg-white <?php echo ($i%2 == 0 ) ? "dark:bg-gray-900" : "dark:bg-gray-700";?>">
+                            <tr class="<?php echo ($i%2 == 0 ) ? "bg-gray-900" : "bg-gray-700";?>">
                                 <th scope="col" class="py-3 px-6">
                                     {{$user->name}}
                                 </th>
                                 <td class="py-4 px-6">
-                                    <a class="btn btn-warning" href="{{route("usuaris.edit",$user->id)}}">
+                                    <a class="btn btn-warning" href="{{route("usuaris.edit",$user->username)}}">
                                         <span class="material-symbols-outlined">edit_square</span>
                                     </a>
                                 </td>

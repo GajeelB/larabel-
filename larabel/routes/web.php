@@ -36,8 +36,8 @@ Route::get("/latest", [PostController::class, "latest"])->name("posts.latest");
 Route::resource('images', ImageController::class )->only("store");
 
 //FOLLOW
-Route::post("{usuari:username}/follow", [FollowController::class, 'store'])->name("user.follow.store");
-Route::delete("{usuari:username}/unfollow", [FollowController::class, 'destroy'])->name("user.follow.store");
+Route::post("{usuari}/follow", [FollowController::class, 'store'])->name("user.follow.store");
+Route::delete("{usuari}/unfollow", [FollowController::class, 'destroy'])->name("user.follow.delete");
 
 
 Route::get('/', function () {

@@ -51,18 +51,19 @@
                             <div class="flex justify-start mt-4 space-x-3 md:mt-6">
                                 @auth()
                                     @if(Auth::user()->id != $usuari->id )
-                                        <form action="{{route("user.follow.store", $usuari->username)}}" method="post">
-                                            @csrf
                                             @if(!$usuari->isFollowed(Auth::user()))
 
+                                                <form action="{{route("user.follow.store",$usuari)}}" method="post">
+                                                @csrf
                                                 <button
-                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-blue-500 border border-blue-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
                                                 >
                                                     Follow
                                                 </button>
                                         </form>
                                     @else
-
+                                            <form action="{{route("user.follow.delete", $usuari)}}" method="post">
+                                        @csrf
                                         @method("delete")
                                         <button
                                             class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-red-900 bg-red-500 border-2 border-red-900 rounded-lg hover:bg-red-100 focus:ring-4 focus:outline-none focus:ring-red-200 "
